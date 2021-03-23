@@ -110,3 +110,12 @@ module Infix = struct
   let ( >> ) a b = shift_right a b
   let ( << ) a b = shift_left a b
 end
+
+type (_, _) equality = Refl : ('a, 'a) equality
+
+type concrete =
+  | Int of (t, int) equality
+  | Int32 of (t -> int32)
+  | Int64 of (t -> int64)
+
+let observe = Int Refl

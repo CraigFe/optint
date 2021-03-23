@@ -170,3 +170,13 @@ module Infix : sig
 
   val ( << ) : t -> int -> t
 end
+
+type (_, _) equality = Refl : ('a, 'a) equality
+
+type concrete =
+  | Int of (t, int) equality
+  | Int32 of (t -> int32)
+  | Int64 of (t -> int64)
+
+val observe : concrete
+
